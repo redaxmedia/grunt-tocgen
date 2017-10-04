@@ -1,0 +1,35 @@
+{
+	"name": "grunt-tocgen",
+	"description": "Table of Contents generator for CSS and JavaScript",
+	"version": "1.0.0",
+	"license": "GPL-3.0",
+	"author":
+	{
+		"name": "Henry Ruhs",
+		"url": "https://redaxmedia.com"
+	},
+	"bugs":
+	{
+		"url": "https://github.com/redaxmedia/grunt-tocgen/issues"
+	},
+	"keywords":
+	[
+		"gruntplugin"
+	],
+	"dependencies":
+	{
+		"comment-parser": "0.4.2"
+	},
+	"devDependencies":
+	{
+		"chai": "4.1.2",
+		"eslint": "4.8.0",
+		"grunt": "1.0.1",
+		"mocha": "4.0.0"
+	},
+	"scripts":
+	{
+		"lint": "node_modules/eslint/bin/eslint.js src tests",
+		"test": "node_modules/mocha/bin/mocha tests/*Test.js"
+	}
+}

@@ -1,0 +1,42 @@
+/**
+* @tableofcontents
+*
+* 1. test
+* 2. query
+*  2.1 medium min
+*  2.2 medium max
+*/
+
+/**
+ * @section 1. test
+ */
+
+.test
+{
+}
+
+/**
+ * @section 2. query
+ */
+
+/**
+ * @section 2.1 medium min
+ */
+
+@media (--media-medium-min)
+{
+	.test
+	{
+	}
+}
+
+/**
+ * @section 2.2 medium max
+ */
+
+@media (--media-medium-max)
+{
+	.test
+	{
+	}
+}
