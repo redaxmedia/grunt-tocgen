@@ -36,6 +36,7 @@ function _parseToc(path, optionArray)
 	});
 	return tocArray;
 }
+
 /**
  * render the toc
  *
@@ -73,6 +74,22 @@ function _renderToc(path, optionArray)
 }
 
 /**
+ * render
+ *
+ * @since 1.0.0
+ *
+ * @param path string
+ * @param optionArray array
+ *
+ * @return string
+ */
+
+function _render(path, optionArray)
+{
+	return _renderToc(path, optionArray) + grunt.file.read(path);
+}
+
+/**
  * init
  *
  * @since 1.0.0
@@ -80,21 +97,19 @@ function _renderToc(path, optionArray)
 
 function init()
 {
-	optionArray = extend(optionArray, this.options());;
-
-	let content = null;
+	optionArray = extend(optionArray, this.options());
 
 	/* process files */
 
 	this.files.forEach(fileValue =>
 	{
-		content = fileValue.src.filter(path =>
+		const content = fileValue.src.filter(path =>
 		{
 			return grunt.file.exists(path);
 		})
 		.map(path =>
 		{
-			return _renderToc(path, optionArray) + grunt.file.read(path);
+			return _render(path, optionArray);
 		})
 		.join(optionArray.newline);
 

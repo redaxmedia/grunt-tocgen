@@ -1,6 +1,5 @@
 const expect = require('chai').expect;
 const exec = require('child_process').exec;
-const fs = require('fs');
 
 describe('tocgen', () =>
 {
