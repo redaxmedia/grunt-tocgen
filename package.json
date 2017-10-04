@@ -18,7 +18,8 @@
 	],
 	"dependencies":
 	{
-		"comment-parser": "0.4.2"
+		"comment-parser": "0.4.2",
+		"extend": "3.0.1"
 	},
 	"devDependencies":
 	{

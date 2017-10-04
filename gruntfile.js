@@ -14,18 +14,7 @@ module.exports = grunt =>
 				[
 					'tests/provider/input.css'
 				],
-				dest: 'tests/provider/output.css',
-				options:
-				{
-					tag:
-					{
-						toc: 'tableofcontents',
-						section: 'section',
-					},
-					indent: ' ',
-					divider: '.',
-					newline: '\n'
-				}
+				dest: 'tests/provider/output.css'
 			}
 		}
 	});

@@ -37,6 +37,14 @@ grunt.initConfig(
 		{
 			options:
 			{
+				tag:
+				{
+					toc: 'tableofcontents',
+					section: 'section',
+				},
+				divider: '.',
+				indent: ' ',
+				newline: '\n'
 			}
 		}
 	}

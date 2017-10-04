@@ -1,6 +1,9 @@
 const grunt = require('grunt');
+const extend = require('extend');
 const parser = require('comment-parser');
 const packageArray = require('../package.json');
+
+let optionArray = require('../option.json');
 
 /**
  * parse the toc
@@ -77,7 +80,7 @@ function _renderToc(path, optionArray)
 
 function init()
 {
-	const optionArray = this.options();
+	optionArray = extend(optionArray, this.options());;
 
 	let content = null;
 
