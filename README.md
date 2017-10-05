@@ -1,7 +1,7 @@
 Grunt Tocgen
 ============
 
-> Table of Contents generator for CSS and JavaScript.
+> Grunt enhanced table of contents generator.
 
 [![Build Status](https://img.shields.io/travis/redaxmedia/grunt-tocgen.svg)](https://travis-ci.org/redaxmedia/grunt-tocgen)
 [![Dependency Status](https://gemnasium.com/badges/github.com/redaxmedia/grunt-tocgen.svg)](https://gemnasium.com/github.com/redaxmedia/grunt-tocgen)

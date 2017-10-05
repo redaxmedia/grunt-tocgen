@@ -6,21 +6,20 @@ const packageArray = require('../package.json');
 let optionArray = require('../option.json');
 
 /**
- * parse the toc
+ * render
  *
  * @since 1.0.0
  *
- * @param path string
- * @param optionArray array
+ * @param content string
  *
- * @return array
+ * @return string
  */
 
-function _parseToc(path, optionArray)
+function _render(content)
 {
-	const content = grunt.file.read(path);
 	const parserArray = parser(content);
-	const tocArray = [];
+
+	let output = '/**' + optionArray.newline + ' * @' + optionArray.tag.toc + optionArray.newline + ' *' + optionArray.newline;
 
 	/* process parser */
 
@@ -30,63 +29,21 @@ function _parseToc(path, optionArray)
 		{
 			if (tagValue.tag === optionArray.tag.section)
 			{
-				tocArray[tagValue.name] = tagValue.description;
+				output += ' *' + optionArray.indent.repeat(tagValue.name.length - 1);
+				output += tagValue.name + optionArray.indent + tagValue.description + optionArray.newline;
+			}
+			if (tagValue.tag === optionArray.tag.toc)
+			{
+				const raw = '/**' + optionArray.newline + ' * ' + parserValue.source.split(optionArray.newline)
+						.join(optionArray.newline + ' * ')
+						.replace(optionArray.newline + ' * ', optionArray.newline + ' *') + optionArray.newline + ' */';
+
+				content = content.replace(raw, '').replace(optionArray.newline.repeat(2), '');
 			}
 		});
 	});
-	return tocArray;
-}
-
-/**
- * render the toc
- *
- * @since 1.0.0
- *
- * @param path string
- * @param optionArray array
- *
- * @return string
- */
-
-function _renderToc(path, optionArray)
-{
-	const tocArray = _parseToc(path, optionArray);
-
-	let output = '/**' + optionArray.newline + '*' + optionArray.indent + '@' + optionArray.tag.toc + optionArray.newline + '*' + optionArray.newline;
-
-	/* process toc */
-
-	Object.keys(tocArray).forEach(tocValue =>
-	{
-		if (tocValue)
-		{
-			const indentArray = tocValue.split(optionArray.divider).filter(value =>
-			{
-				return value;
-			});
-
-			output += '*' + optionArray.indent.repeat(indentArray.length);
-			output += tocValue + optionArray.indent + tocArray[tocValue] + optionArray.newline;
-		}
-	});
-	output += '*/' + optionArray.newline.repeat(2);
+	output += ' */' + optionArray.newline.repeat(2) + content;
 	return output;
-}
-
-/**
- * render
- *
- * @since 1.0.0
- *
- * @param path string
- * @param optionArray array
- *
- * @return string
- */
-
-function _render(path, optionArray)
-{
-	return _renderToc(path, optionArray) + grunt.file.read(path);
 }
 
 /**
@@ -109,7 +66,7 @@ function init()
 		})
 		.map(path =>
 		{
-			return _render(path, optionArray);
+			return _render(grunt.file.read(path));
 		})
 		.join(optionArray.newline);
 

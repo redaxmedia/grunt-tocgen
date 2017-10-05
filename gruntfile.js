@@ -14,7 +14,7 @@ module.exports = grunt =>
 				[
 					'tests/provider/input.css'
 				],
-				dest: 'tests/provider/output.css'
+				dest: 'tests/provider/temp.css'
 			}
 		}
 	});
