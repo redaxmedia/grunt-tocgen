@@ -19,6 +19,7 @@ function _render(content)
 {
 	const parserArray = parser(content);
 
+	let status = false;
 	let output = '/**' + optionArray.newline + ' * @' + optionArray.tag.toc + optionArray.newline + ' *' + optionArray.newline;
 
 	/* process parser */
