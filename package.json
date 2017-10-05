@@ -18,7 +18,6 @@
 	],
 	"dependencies":
 	{
-		"comment-parser": "0.4.2",
 		"docblock": "0.3.4",
 		"extend": "3.0.1"
 	},

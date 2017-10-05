@@ -42,11 +42,42 @@ grunt.initConfig(
 					toc: 'tableofcontents',
 					section: 'section',
 				},
-				divider: '.',
 				indent: ' ',
 				newline: '\n'
 			}
 		}
 	}
 }
+```
+
+
+Examples
+--------
+
+Input file:
+
+```
+/** @section 1. first */
+
+/** @section 1.1 sub */
+
+/** @section 2. second */
+```
+
+Output file:
+
+```
+/**
+ * @tableofcontents
+ *
+ * 1. first
+ *    1.1 sub
+ * 2. second
+ */
+
+/** @section 1. first */
+
+/** @section 1.1 sub */
+
+/** @section 2. second */
 ```
