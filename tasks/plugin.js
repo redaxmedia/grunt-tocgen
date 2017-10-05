@@ -29,6 +29,7 @@ function _render(content)
 		{
 			if (tagValue.tag === optionArray.tag.section)
 			{
+				status = true;
 				output += ' *' + optionArray.indent.repeat(tagValue.name.length - 1);
 				output += tagValue.name + optionArray.indent + tagValue.description + optionArray.newline;
 			}
@@ -43,7 +44,27 @@ function _render(content)
 		});
 	});
 	output += ' */' + optionArray.newline.repeat(2) + content;
-	return output;
+	return status ? output : content;
+}
+
+/**
+ * process
+ *
+ * @since 1.0.0
+ *
+ * @param source string
+ * @param target string
+ */
+
+function _process(source, target)
+{
+	const content = _render(grunt.file.read(source));
+
+	if (content)
+	{
+		grunt.log.success(target ? source + ' > ' + target : source);
+		grunt.file.write(target, content);
+	}
 }
 
 /**
@@ -60,22 +81,16 @@ function init()
 
 	this.files.forEach(fileValue =>
 	{
-		const content = fileValue.src.filter(path =>
+		if (fileValue.dest)
 		{
-			return grunt.file.exists(path);
-		})
-		.map(path =>
+			_process(fileValue.src, fileValue.dest);
+		}
+		else
 		{
-			return _render(grunt.file.read(path));
-		})
-		.join(optionArray.newline);
-
-		/* write content */
-
-		if (content.length)
-		{
-			grunt.log.success(fileValue.src + ' > ' + fileValue.dest);
-			grunt.file.write(fileValue.dest, content);
+			fileValue.src.forEach(sourceValue =>
+			{
+				_process(sourceValue, sourceValue);
+			});
 		}
 	});
 }
