@@ -62,7 +62,7 @@ function _process(source, target)
 
 	if (content)
 	{
-		grunt.log.success(target ? source + ' > ' + target : source);
+		grunt.log.success(source + ' > ' + target);
 		grunt.file.write(target, content);
 	}
 }
