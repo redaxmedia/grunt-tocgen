@@ -1,6 +1,6 @@
 const grunt = require('grunt');
 const extend = require('extend');
-const parser = require('comment-parser');
+const DocBlock = require('docblock');
 const packageArray = require('../package.json');
 
 let optionArray = require('../option.json');
@@ -17,30 +17,29 @@ let optionArray = require('../option.json');
 
 function _render(content)
 {
-	const parserArray = parser(content);
+	const docblock = new DocBlock();
+	const commentArray = docblock.parse(content);
 
 	let status = false;
 	let output = '/**' + optionArray.newline + ' * @' + optionArray.tag.toc + optionArray.newline + ' *' + optionArray.newline;
 
-	/* process parser */
+	/* process comment */
 
-	parserArray.forEach(parserValue =>
+	commentArray.forEach(commentValue =>
 	{
-		parserValue.tags.forEach(tagValue =>
+		Object.keys(commentValue.tags).forEach(tagValue =>
 		{
-			if (tagValue.tag === optionArray.tag.section)
+			if (tagValue === optionArray.tag.section)
 			{
-				status = true;
-				output += ' *' + optionArray.indent.repeat(tagValue.name.length - 1);
-				output += tagValue.name + optionArray.indent + tagValue.description + optionArray.newline;
-			}
-			if (tagValue.tag === optionArray.tag.toc)
-			{
-				const raw = '/**' + optionArray.newline + ' * ' + parserValue.source.split(optionArray.newline)
-						.join(optionArray.newline + ' * ')
-						.replace(optionArray.newline + ' * ', optionArray.newline + ' *') + optionArray.newline + ' */';
+				const numberArray = commentValue.tags.section.match(/\d/g);
 
-				content = content.replace(raw, '').replace(optionArray.newline.repeat(2), '');
+				status = true;
+				output += ' *' + optionArray.indent.repeat(numberArray.length === 1 ? 1 : numberArray.length * 2);
+				output += commentValue.tags.section + optionArray.newline;
+			}
+			if (tagValue === optionArray.tag.toc)
+			{
+				content = content.replace(commentValue.raw, '').replace(optionArray.newline.repeat(2), '');
 			}
 		});
 	});
