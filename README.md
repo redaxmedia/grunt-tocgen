@@ -35,6 +35,10 @@ grunt.initConfig(
 	{
 		name:
 		{
+			src:
+			[
+				'styles/**.css'
+			],
 			options:
 			{
 				tag:
