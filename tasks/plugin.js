@@ -101,8 +101,6 @@ function init()
  * @since 1.0.0
  *
  * @param grunt object
- *
- * @return object
  */
 
 function construct(grunt)
