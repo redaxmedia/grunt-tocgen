@@ -28,7 +28,7 @@ grunt.loadNpmTasks('grunt-tocgen');
 
 Config the task:
 
-```
+```js
 grunt.initConfig(
 {
 	tocgen:
@@ -60,7 +60,7 @@ Examples
 
 Input file:
 
-```
+```css
 /** @section 1. first */
 
 /** @section 1.1 sub */
@@ -70,7 +70,7 @@ Input file:
 
 Output file:
 
-```
+```css
 /**
  * @tableofcontents
  *
