@@ -22,7 +22,7 @@ Usage
 
 Load the task:
 
-```
+```js
 grunt.loadNpmTasks('grunt-tocgen');
 ```
 
