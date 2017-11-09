@@ -37,7 +37,7 @@
 	},
 	"scripts":
 	{
-		"lint": "node_modules/eslint/bin/eslint.js tasks tests",
-		"test": "node_modules/mocha/bin/mocha tests/*Test.js"
+		"lint": "eslint tasks tests",
+		"test": "mocha tests/*Test.js"
 	}
 }
