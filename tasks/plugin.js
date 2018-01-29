@@ -17,8 +17,8 @@ let optionArray = require('../option.json');
 
 function _render(content)
 {
-	const docblock = new DocBlock();
-	const commentArray = docblock.parse(content);
+	const docBlock = new DocBlock();
+	const commentArray = docBlock.parse(content);
 
 	let status = false;
 	let output = '/**' + optionArray.newline + ' * @' + optionArray.tag.toc + optionArray.newline + ' *' + optionArray.newline;
