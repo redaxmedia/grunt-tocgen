@@ -4,7 +4,7 @@ Grunt Tocgen
 > Grunt enhanced table of contents generator.
 
 [![Build Status](https://img.shields.io/travis/redaxmedia/grunt-tocgen.svg)](https://travis-ci.org/redaxmedia/grunt-tocgen)
-[![Dependency Status](https://gemnasium.com/badges/github.com/redaxmedia/grunt-tocgen.svg)](https://gemnasium.com/github.com/redaxmedia/grunt-tocgen)
+[![Dependency Status](https://dependencyci.com/github/redaxmedia/grunt-tocgen/badge)](https://dependencyci.com/github/redaxmedia/grunt-tocgen)
 [![NPM Version](https://img.shields.io/npm/v/grunt-tocgen.svg)](https://npmjs.com/package/grunt-tocgen)
 [![Licensen](https://img.shields.io/npm/l/grunt-tocgen.svg)](https://npmjs.com/package/grunt-tocgen)
 
