@@ -58,12 +58,17 @@ function _render(content)
 
 function _process(source, target)
 {
-	const content = _render(grunt.file.read(source));
+	const content = grunt.file.read(source);
+	const output = _render(content);
 
-	if (content)
+	if (content === output)
 	{
-		grunt.log.success(source + ' > ' + target);
-		grunt.file.write(target, content);
+		grunt.log.error(source + ' === ' + target);
+	}
+	else
+	{
+		grunt.log.ok(source + ' > ' + target);
+		grunt.file.write(target, output);
 	}
 }
 

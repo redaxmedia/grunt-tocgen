@@ -8,11 +8,19 @@ module.exports = grunt =>
 	{
 		tocgen:
 		{
-			css:
+			success:
 			{
 				src:
 				[
 					'tests/provider/input.css'
+				],
+				dest: 'tests/provider/temp.css'
+			},
+			error:
+			{
+				src:
+				[
+					'tests/provider/output.css'
 				],
 				dest: 'tests/provider/temp.css'
 			}
