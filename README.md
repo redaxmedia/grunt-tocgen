@@ -36,7 +36,7 @@ grunt.initConfig(
 		{
 			src:
 			[
-				'styles/**.css'
+				'styles/*.css'
 			],
 			options:
 			{
