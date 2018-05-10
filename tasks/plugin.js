@@ -86,17 +86,10 @@ function init()
 
 	this.files.forEach(fileValue =>
 	{
-		if (fileValue.src && fileValue.dest)
+		fileValue.src.forEach(sourceValue =>
 		{
-			_process(fileValue.src, fileValue.dest);
-		}
-		else if (fileValue.src)
-		{
-			fileValue.src.forEach(sourceValue =>
-			{
-				_process(sourceValue, sourceValue);
-			});
-		}
+			_process(sourceValue, fileValue.dest ? fileValue.dest : sourceValue);
+		});
 	});
 }
 
