@@ -86,11 +86,11 @@ function init()
 
 	this.files.forEach(fileValue =>
 	{
-		if (fileValue.dest)
+		if (fileValue.src && fileValue.dest)
 		{
 			_process(fileValue.src, fileValue.dest);
 		}
-		else
+		else if (fileValue.src)
 		{
 			fileValue.src.forEach(sourceValue =>
 			{
