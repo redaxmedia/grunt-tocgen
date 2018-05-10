@@ -53,6 +53,12 @@ grunt.initConfig(
 }
 ```
 
+Run the task:
+
+```
+grunt tocgen
+```
+
 
 Examples
 --------
