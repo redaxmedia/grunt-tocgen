@@ -32,7 +32,7 @@
 	{
 		"chai": "4.1.2",
 		"eslint": "5.0.1",
-		"eslint-config-redaxmedia": "https://github.com/redaxmedia/eslint-config-redaxmedia.git",
+		"eslint-config-redaxmedia": "1.0.1",
 		"grunt": "1.0.3",
 		"mocha": "5.2.0"
 	},
