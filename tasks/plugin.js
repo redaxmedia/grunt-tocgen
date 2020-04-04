@@ -1,5 +1,4 @@
 const grunt = require('grunt');
-const extend = require('extend');
 const DocBlock = require('docblock');
 const packageArray = require('../package.json');
 
@@ -80,7 +79,11 @@ function _process(source, target)
 
 function init()
 {
-	optionArray = extend(optionArray, this.options());
+	optionArray =
+	{
+		...optionArray,
+		...this.options()
+	};
 
 	/* process files */
 

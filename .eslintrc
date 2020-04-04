@@ -8,5 +8,9 @@
 	"extends":
 	[
 		"eslint-config-redaxmedia"
-	]
+	],
+	"parserOptions":
+	{
+		"ecmaVersion": 2018
+	}
 }
