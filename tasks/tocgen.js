@@ -18,7 +18,7 @@ function _render(content)
 	const DOCBLOCK = new docblock();
 	const commentArray = DOCBLOCK.parse(content);
 
-	let status = false;
+	let doUpdate = false;
 	let output = '/**' + option.get('newline') + ' * @' + option.get('tags').toc + option.get('newline') + ' *' + option.get('newline');
 
 	/* process comment */
@@ -29,11 +29,11 @@ function _render(content)
 		{
 			if (tagValue === option.get('tags').section)
 			{
-				const numberArray = commentValue.tags.section.match(/\d/g);
+				const numberArray = commentValue.tags[tagValue].match(/\d/g);
 
-				status = true;
+				doUpdate = true;
 				output += ' *' + option.get('indent').repeat(numberArray.length === 1 ? 1 : numberArray.length * 2);
-				output += commentValue.tags.section + option.get('newline');
+				output += commentValue.tags[tagValue] + option.get('newline');
 			}
 			if (tagValue === option.get('tags').toc)
 			{
@@ -42,7 +42,7 @@ function _render(content)
 		});
 	});
 	output += ' */' + option.get('newline').repeat(2) + content;
-	return status ? output : content;
+	return doUpdate ? output : content;
 }
 
 /**
@@ -63,7 +63,7 @@ function _process(source, target)
 
 	if (content === output)
 	{
-		grunt.log.error(source + ' === ' + target);
+		grunt.log.error(source + ' !== ' + target);
 	}
 	else
 	{

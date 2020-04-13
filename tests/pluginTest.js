@@ -18,11 +18,25 @@ describe('tocgen', () =>
 		});
 	});
 
+	it('success with option', done =>
+	{
+		exec('grunt tocgen:successWithOption', (error, stdout) =>
+		{
+			const output = fs.readFileSync('tests/provider/output_with_option.css', 'utf8');
+			const temp = fs.readFileSync('tests/provider/temp_with_option.css', 'utf8');
+
+			fs.unlinkSync('tests/provider/temp_with_option.css');
+			expect(stdout).to.match(/tests\/provider\/input_with_option.css > tests\/provider\/temp_with_option.css/);
+			expect(output).to.equal(temp);
+			done();
+		});
+	});
+
 	it('error', done =>
 	{
 		exec('grunt tocgen:error', (error, stdout) =>
 		{
-			expect(stdout).to.match(/tests\/provider\/output.css === tests\/provider\/temp.css/);
+			expect(stdout).to.match(/tests\/provider\/output.css !== tests\/provider\/temp.css/);
 			done();
 		});
 	});

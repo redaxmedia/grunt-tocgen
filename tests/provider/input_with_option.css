@@ -1,0 +1,41 @@
+/**
+ * @tableofcontents__
+ *
+ * 1. test
+ *
+ * @deprecated
+ */
+
+/**
+ * @section__ 1. test
+ */
+
+.test
+{
+}
+
+/**
+ * @section__ 2. query
+ */
+
+/**
+ * @section__ 2.1 medium min
+ */
+
+@media (--media-medium-min)
+{
+	.test
+	{
+	}
+}
+
+/**
+ * @section__ 2.2 medium max
+ */
+
+@media (--media-medium-max)
+{
+	.test
+	{
+	}
+}

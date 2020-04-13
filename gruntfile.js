@@ -16,6 +16,22 @@ module.exports = grunt =>
 				],
 				dest: 'tests/provider/temp.css'
 			},
+			successWithOption:
+			{
+				src:
+				[
+					'tests/provider/input_with_option.css'
+				],
+				dest: 'tests/provider/temp_with_option.css',
+				options:
+				{
+					tags:
+					{
+						toc: 'tableofcontents__',
+						section: 'section__'
+					}
+				}
+			},
 			error:
 			{
 				src:
