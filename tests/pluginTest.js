@@ -34,9 +34,9 @@ describe('tocgen', () =>
 
 	it('error', done =>
 	{
-		exec('grunt tocgen:error', (error, stdout) =>
+		exec('grunt tocgen:error --debug', (error, stdout) =>
 		{
-			expect(stdout).to.match(/tests\/provider\/output.css !== tests\/provider\/temp.css/);
+			expect(stdout).to.match(/tests\/provider\/output.css === tests\/provider\/temp.css/);
 			done();
 		});
 	});

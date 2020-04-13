@@ -16,27 +16,27 @@ const packageObject = require('../package.json');
 function _render(content)
 {
 	const DOCBLOCK = new docblock();
-	const commentArray = DOCBLOCK.parse(content);
+	const docblockArray = DOCBLOCK.parse(content);
 	const outputArray = [];
 
 	outputArray.push('/**' + option.get('newline') + ' * @' + option.get('tags').toc + option.get('newline') + ' *' + option.get('newline'));
 
 	/* process comment */
 
-	commentArray.forEach(commentValue =>
+	docblockArray.forEach(docblockValue =>
 	{
-		Object.keys(commentValue.tags).forEach(tagValue =>
+		Object.keys(docblockValue.tags).forEach(tagValue =>
 		{
 			if (tagValue === option.get('tags').section)
 			{
-				const numberArray = commentValue.tags[tagValue] ? commentValue.tags[tagValue].match(/\d/g) : [];
+				const numberArray = docblockValue.tags[tagValue] ? docblockValue.tags[tagValue].match(/\d/g) : [];
 
 				outputArray.push(' *' + option.get('indent').repeat(numberArray.length > 1 ? numberArray.length * 2 : 1));
-				outputArray.push(commentValue.tags[tagValue] + option.get('newline'));
+				outputArray.push(docblockValue.tags[tagValue] + option.get('newline'));
 			}
 			if (tagValue === option.get('tags').toc)
 			{
-				content = content.replace(commentValue.raw, '').replace(option.get('newline').repeat(2), '');
+				content = content.replace(docblockValue.raw, '').replace(option.get('newline').repeat(2), '');
 			}
 		});
 	});
@@ -62,7 +62,7 @@ function _process(source, target)
 
 	if (content === output)
 	{
-		grunt.log.error(source + ' !== ' + target);
+		grunt.log.debug(source + ' === ' + target);
 	}
 	else
 	{
