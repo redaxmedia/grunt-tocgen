@@ -1,1 +1,1 @@
-module.exports = require('./tasks/plugin');
+module.exports = require('./tasks/tocgen');

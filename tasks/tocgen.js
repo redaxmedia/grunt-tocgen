@@ -1,6 +1,6 @@
 const grunt = require('grunt');
-const DocBlock = require('docblock');
-const packageArray = require('../package.json');
+const docblock = require('docblock');
+const packageObject = require('../package.json');
 
 let optionArray = require('../option.json');
 
@@ -9,15 +9,15 @@ let optionArray = require('../option.json');
  *
  * @since 1.0.0
  *
- * @param content string
+ * @param {string} content
  *
- * @return string
+ * @return {string}
  */
 
 function _render(content)
 {
-	const docBlock = new DocBlock();
-	const commentArray = docBlock.parse(content);
+	const DOCBLOCK = new docblock();
+	const commentArray = DOCBLOCK.parse(content);
 
 	let status = false;
 	let output = '/**' + optionArray.newline + ' * @' + optionArray.tag.toc + optionArray.newline + ' *' + optionArray.newline;
@@ -51,8 +51,10 @@ function _render(content)
  *
  * @since 1.0.0
  *
- * @param source string
- * @param target string
+ * @param {string} source
+ * @param {string} target
+ *
+ * @return {void}
  */
 
 function _process(source, target)
@@ -75,6 +77,8 @@ function _process(source, target)
  * init
  *
  * @since 1.0.0
+ *
+ * @return {void}
  */
 
 function init()
@@ -101,12 +105,14 @@ function init()
  *
  * @since 1.0.0
  *
- * @param grunt object
+ * @param {object} grunt
+ *
+ * @return {void}
  */
 
 function construct(grunt)
 {
-	grunt.registerMultiTask('tocgen', packageArray.description, init);
+	grunt.registerMultiTask('tocgen', packageObject.description, init);
 }
 
 module.exports = construct;

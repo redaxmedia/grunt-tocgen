@@ -50,7 +50,7 @@ grunt.initConfig(
 			}
 		}
 	}
-}
+});
 ```
 
 Run the task:
