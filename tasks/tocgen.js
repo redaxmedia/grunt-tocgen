@@ -17,11 +17,12 @@ function _render(content)
 {
 	const DOCBLOCK = new docblock();
 	const docblockArray = DOCBLOCK.parse(content);
-	const outputArray = [];
+	const outputArray =
+	[
+		'/**' + option.get('newline') + ' * @' + option.get('tags').toc + option.get('newline') + ' *' + option.get('newline')
+	];
 
-	outputArray.push('/**' + option.get('newline') + ' * @' + option.get('tags').toc + option.get('newline') + ' *' + option.get('newline'));
-
-	/* process comment */
+	/* process docblock */
 
 	docblockArray.forEach(docblockValue =>
 	{
