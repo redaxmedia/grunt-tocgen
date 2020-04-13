@@ -40,7 +40,7 @@ grunt.initConfig(
 			],
 			options:
 			{
-				tag:
+				tags:
 				{
 					toc: 'tableofcontents',
 					section: 'section'

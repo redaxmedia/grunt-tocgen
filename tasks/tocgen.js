@@ -1,8 +1,7 @@
 const grunt = require('grunt');
 const docblock = require('docblock');
+const option = require('utility-redaxmedia').option(__dirname + '/../option.json');
 const packageObject = require('../package.json');
-
-let optionArray = require('../option.json');
 
 /**
  * render
@@ -20,7 +19,7 @@ function _render(content)
 	const commentArray = DOCBLOCK.parse(content);
 
 	let status = false;
-	let output = '/**' + optionArray.newline + ' * @' + optionArray.tag.toc + optionArray.newline + ' *' + optionArray.newline;
+	let output = '/**' + option.get('newline') + ' * @' + option.get('tags').toc + option.get('newline') + ' *' + option.get('newline');
 
 	/* process comment */
 
@@ -28,21 +27,21 @@ function _render(content)
 	{
 		Object.keys(commentValue.tags).forEach(tagValue =>
 		{
-			if (tagValue === optionArray.tag.section)
+			if (tagValue === option.get('tags').section)
 			{
 				const numberArray = commentValue.tags.section.match(/\d/g);
 
 				status = true;
-				output += ' *' + optionArray.indent.repeat(numberArray.length === 1 ? 1 : numberArray.length * 2);
-				output += commentValue.tags.section + optionArray.newline;
+				output += ' *' + option.get('indent').repeat(numberArray.length === 1 ? 1 : numberArray.length * 2);
+				output += commentValue.tags.section + option.get('newline');
 			}
-			if (tagValue === optionArray.tag.toc)
+			if (tagValue === option.get('tags').toc)
 			{
-				content = content.replace(commentValue.raw, '').replace(optionArray.newline.repeat(2), '');
+				content = content.replace(commentValue.raw, '').replace(option.get('newline').repeat(2), '');
 			}
 		});
 	});
-	output += ' */' + optionArray.newline.repeat(2) + content;
+	output += ' */' + option.get('newline').repeat(2) + content;
 	return status ? output : content;
 }
 
@@ -83,11 +82,7 @@ function _process(source, target)
 
 function init()
 {
-	optionArray =
-	{
-		...optionArray,
-		...this.options()
-	};
+	option.init(this.options());
 
 	/* process files */
 
