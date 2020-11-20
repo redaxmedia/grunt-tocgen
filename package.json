@@ -1,8 +1,8 @@
 {
 	"name": "grunt-tocgen",
 	"description": "Grunt enhanced table of contents generator",
-	"version": "1.3.0",
-	"license": "GPL-3.0",
+	"version": "1.3.1",
+	"license": "MIT",
 	"keywords":
 	[
 		"docblock",
@@ -31,15 +31,15 @@
 	"devDependencies":
 	{
 		"chai": "4.2.0",
-		"eslint": "6.8.0",
-		"eslint-config-redaxmedia": "2.0.0",
-		"grunt": "1.1.0",
-		"mocha": "7.1.1"
+		"eslint": "7.13.0",
+		"eslint-config-redaxmedia": "2.2.0",
+		"grunt": "1.3.0",
+		"mocha": "8.2.1"
 	},
 	"scripts":
 	{
 		"lint": "eslint tasks tests",
 		"fix": "eslint tasks tests --fix",
-		"test": "mocha tests/*Test.js"
+		"test": "mocha"
 	}
 }
